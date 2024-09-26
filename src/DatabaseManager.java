@@ -18,11 +18,13 @@ public class DatabaseManager {
         String sql = "INSERT INTO expsenses (expense_date, sum, description) VALUES (?, ?, ?)";
 //values empty for now
 
+// try-with-resources to automatically close the database connection and statement after they are used
         try (Connection conn = connect();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, date);
             stmt.setString(2, sum);
             stmt.setString(3, description);
+
 //to insert expense entry into the database
             stmt.executeUpdate();
         } catch (SQLException e){
