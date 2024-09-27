@@ -24,12 +24,16 @@ public class DatabaseManager {
             stmt.setString(1, date);
             stmt.setString(2, sum);
             stmt.setString(3, description);
+            stmt.setInt(4, id);
 
 //to insert expense entry into the database
-            stmt.executeUpdate();
-        } catch (SQLException e){
+            int rowsAffected = stmt.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Expense updated successfully!");
+            } else {
+                System.out.println("Expense not found.");
+            }
+        } catch (SQLException e) {
             e.printStackTrace();
-//to catch in case error happens
         }
     }
-}
