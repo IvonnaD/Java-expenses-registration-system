@@ -1,7 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
-public class ExpenseManager {
+public class ExpenseManager<ActionEvent> {
     private JTextField dateField;
     private JTextField sumField;
     private JTextField descriptionField;
@@ -60,12 +61,22 @@ public class ExpenseManager {
         addButton.setBounds(10, 110, 150, 25);
         panel.add(addButton);
 
+// ActionListener to handle button click
+        addButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String date = dateField.getText();
+                double sum = Double.parseDouble(sumField.getText());
+                String description = descriptionField.getText();
+
+                dbManager.addExpense(date, sum, description); // Add the expense to the database
+                JOptionPane.showMessageDialog(null, "Expense added successfully!");
+            }
+        });
     }
 
-
-
-
-
-
-
+    // Main method to run the application
+    public static void main(String[] args) {
+        new ExpenseManager(); // Create and show the app
+    }
 }
