@@ -8,7 +8,7 @@ public class ExpenseManager<ActionEvent> {
     private JTextField descriptionField;
     private DatabaseManager dbManager;
 
-    // to set up the Graphical user interface
+// to set up the Graphical user interface
     public ExpenseManager() {
         // creating a window (Jframe)
         JFrame frame = new JFrame ("Expense Registration");
@@ -25,11 +25,11 @@ public class ExpenseManager<ActionEvent> {
         dbManager = new DatabaseManager(); // initializet the database manager
     }
 
-    // to set up the user interface components
+  // to set up the user interface components
     private void placeComponents(JPanel panel){
         panel.setLayout(null);
         
-    // Date label and text field
+   // Date label and text field
         JLabel dateLabel = new JLabel("Date:");
         dateLabel.setBounds(10, 20, 80, 25);
         panel.add(dateLabel);
@@ -47,7 +47,7 @@ public class ExpenseManager<ActionEvent> {
         sumField.setBounds(100, 50, 165, 25);
         panel.add(sumField);
 
-        // Description label and text field
+   // Description label and text field
         JLabel descLabel = new JLabel("Description:");
         descLabel.setBounds(10, 80, 80, 25);
         panel.add(descLabel);
@@ -56,7 +56,7 @@ public class ExpenseManager<ActionEvent> {
         descriptionField.setBounds(100, 80, 165, 25);
         panel.add(descriptionField);
 
-        // Button to add expense
+    // Button to add expense
         JButton addButton = new JButton("Add Expense");
         addButton.setBounds(10, 110, 150, 25);
         panel.add(addButton);
