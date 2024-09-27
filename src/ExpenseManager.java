@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class ExpenseManager {
     private JTextField dateField;
@@ -18,6 +19,46 @@ public class ExpenseManager {
         frame.add(panel);
         placeComponents(panel);
         // set up the UI components
+
+        frame.setVisible(true); //showing the window
+        dbManager = new DatabaseManager(); // initializet the database manager
+    }
+
+    // to set up the user interface components
+    private void placeComponents(JPanel panel){
+        panel.setLayout(null);
+        
+    // Date label and text field
+        JLabel dateLabel = new JLabel("Date:");
+        dateLabel.setBounds(10, 20, 80, 25);
+        panel.add(dateLabel);
+
+        dateField = new JTextField(20);
+        dateField.setBounds(100, 20, 165, 25);
+        Component add = panel.add(dateField);
+
+    // Sum label and text field
+        JLabel sumLabel = new JLabel("Sum:");
+        sumLabel.setBounds(10, 50, 80, 25);
+        panel.add(sumLabel);
+
+        sumField = new JTextField(20);
+        sumField.setBounds(100, 50, 165, 25);
+        panel.add(sumField);
+
+        // Description label and text field
+        JLabel descLabel = new JLabel("Description:");
+        descLabel.setBounds(10, 80, 80, 25);
+        panel.add(descLabel);
+
+        descriptionField = new JTextField(20);
+        descriptionField.setBounds(100, 80, 165, 25);
+        panel.add(descriptionField);
+
+        // Button to add expense
+        JButton addButton = new JButton("Add Expense");
+        addButton.setBounds(10, 110, 150, 25);
+        panel.add(addButton);
 
     }
 
