@@ -8,30 +8,29 @@ public class DatabaseManager {
     private static final String USER = "root";
     private static final String PASSWORD = "";
 
-    //connecting to the database
+    // Connecting to the database
     public Connection connect() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASSWORD);
-
     }
 
-    //adding entry of expenses to the database
+    // Adding entry of expenses to the database
     public void addExpense(String date, double sum, String description) {
         String sql = "INSERT INTO expenses (expense_date, sum, description) VALUES (?, ?, ?)";
-//values empty for now
 
-// try-with-resources to automatically close the database connection and statement after they are used
+        // Try-with-resources to automatically close the database connection and statement
         try (Connection conn = connect();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+             PreparedStatement stmt = conn.prepareStatement(sql)) { // PreparedStatement to prevent SQL injection
             stmt.setString(1, date);
-            stmt.setString(2, String.valueOf(sum));
+            stmt.setDouble(2, sum);  // Using setDouble for sum
             stmt.setString(3, description);
 
-
-//to insert expense entry into the database
+            // Inserting expense entry into the database
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("Expense updated successfully!");
-            } else System.out.println("Expense not found.");
+                System.out.println("Expense added succesfully!");
+            } else {
+                System.out.println("Failed to add the expense.");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
