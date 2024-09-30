@@ -23,7 +23,7 @@ This project is a simple expenses registration system built using Java, MySQL, a
 
 - Java Development Kit (JDK)
 - MySQL Server
-- MySQL Connector/J (JDBC Driver for MySQL)
+- MySQL Connector
 
 ### Setup Instructions
 
