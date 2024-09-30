@@ -1,3 +1,5 @@
+import Expenses.Expense;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -41,8 +43,8 @@ public class DatabaseManager {
         }
     }
     // Reading all expenses from the database
-    public List<Expenses> getAllExpenses() {
-        List<Expenses> expenses = new ArrayList<>();
+    public List<Expense> getAllExpenses() {
+        List<Expense> expenses = new ArrayList<>();
         String sql = "SELECT * FROM expenses";
         try (Connection conn = connect();
              PreparedStatement stmt = conn.prepareStatement(sql);
