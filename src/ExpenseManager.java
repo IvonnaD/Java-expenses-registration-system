@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ExpenseManager<ActionEvent> {
@@ -8,12 +9,18 @@ public class ExpenseManager<ActionEvent> {
     private JTextField descriptionField;
     private DatabaseManager dbManager;
 
-    // to set up the Graphical user interface
+        // to set up the Graphical user interface
     public ExpenseManager() {
         // creating a window (Jframe)
         JFrame frame = new JFrame ("Expense Registration");
         frame.setSize(400, 200);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Method to initialize the GUI
+     private void initUI() {
+           JFrame frame = new JFrame("Expenses Manager");
+           frame.setSize(400, 300);
+           frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // creating panel to hold the components
         JPanel panel = new JPanel();
@@ -22,14 +29,14 @@ public class ExpenseManager<ActionEvent> {
         // set up the UI components
 
         frame.setVisible(true); //showing the window
-        dbManager = new DatabaseManager(); // initializet the database manager
+        dbManager = new DatabaseManager(); // initialize the database manager
     }
 
-    // to set up the user interface components
+         // to set up the user interface components
     private void placeComponents(JPanel panel){
         panel.setLayout(null);
         
-    // Date label and text field
+        // Date label and text field
         JLabel dateLabel = new JLabel("Date:");
         dateLabel.setBounds(10, 20, 80, 25);
         panel.add(dateLabel);
@@ -38,7 +45,7 @@ public class ExpenseManager<ActionEvent> {
         dateField.setBounds(100, 20, 165, 25);
         Component add = panel.add(dateField);
 
-    // Sum label and text field
+        // Sum label and text field
         JLabel sumLabel = new JLabel("Sum:");
         sumLabel.setBounds(10, 50, 80, 25);
         panel.add(sumLabel);
@@ -61,8 +68,13 @@ public class ExpenseManager<ActionEvent> {
         addButton.setBounds(10, 110, 150, 25);
         panel.add(addButton);
 
-// ActionListener to handle button click
+        // ActionListener to handle button click
         addButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+
+            }
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 String date = dateField.getText();
@@ -80,3 +92,4 @@ public class ExpenseManager<ActionEvent> {
         new ExpenseManager(); // Create and show the app
     }
 }
+
