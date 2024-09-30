@@ -27,7 +27,7 @@ public class DatabaseManager {
     // Inserting expense data entry into the database
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("Information added succesfully!");
+                System.out.println("Information added successfully!");
             } else {
                 System.out.println("Failed to add the information.");
             }
